@@ -27,11 +27,11 @@ public class Funcionario extends AbstractEntity<Long> {
 	private LocalDate departure_date;
 	
 	@ManyToOne
-	@JoinColumn(name = "office_fk")
+	@JoinColumn(name = "office")
 	private Cargo office;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "address_fk")
+	@JoinColumn(name = "address")
 	private Endereço address;
 
 	public String getName() {

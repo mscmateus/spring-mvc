@@ -16,10 +16,10 @@ public class Cargo extends AbstractEntity<Long> {
 	private String name;
 	
 	@ManyToOne
-	@JoinColumn(name = "department_fk")
+	@JoinColumn(name = "department")
 	private Departamento department;
 	
-	@OneToMany(mappedBy = "office_fk")
+	@OneToMany(mappedBy = "office")
 	private List<Funcionario> employees;
 
 	public String getName() {

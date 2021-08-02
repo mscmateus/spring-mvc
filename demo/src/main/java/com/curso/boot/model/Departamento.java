@@ -14,7 +14,7 @@ public class Departamento extends AbstractEntity<Long> {
 	@Column(nullable = false, length = 60)
 	private String name;
 	
-	@OneToMany(mappedBy = "department_fk")	
+	@OneToMany(mappedBy = "department")	
 	private List<Cargo> offices;
 
 	public String getName() {
