@@ -19,4 +19,9 @@ public class DepartamentoService {
 		// TODO Auto-generated method stub
 		departamentoRepository.save(departamento);
 	}
+
+	public List<Departamento> findAll() {
+		// TODO Auto-generated method stub
+		return departamentoRepository.findAll();
+	}
 }
