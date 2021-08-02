@@ -24,4 +24,14 @@ public class DepartamentoService {
 		// TODO Auto-generated method stub
 		return departamentoRepository.findAll();
 	}
+
+	public Departamento findById(Long id) {
+		// TODO Auto-generated method stub
+		return departamentoRepository.findById(id);
+	}
+
+	public void update(Departamento departamento) {
+		// TODO Auto-generated method stub
+		departamentoRepository.update(departamento);
+	}
 }

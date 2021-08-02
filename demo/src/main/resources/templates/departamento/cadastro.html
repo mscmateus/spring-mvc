@@ -20,7 +20,7 @@
 		</nav>
 
 		<div class="container" id="cadastro">
-			<form th:action="@{/departamentos/salvar}" th:object="${departamento}" method="POST">
+			<form th:action="${departamento.id == null} ? @{/departamentos/salvar} :  @{/departamentos/atualizar}" th:object="${departamento}" method="POST">
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label for="nome">Departamento</label>
@@ -28,6 +28,7 @@
 							autofocus="autofocus" th:field="*{name}" />
 					</div>
 				</div>
+				<input type="hidden" th:field="*{id}">
 				<button type="submit" class="btn btn-primary btn-sm">Salvar</button>
 			</form>
 		</div>
