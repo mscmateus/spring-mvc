@@ -11,64 +11,64 @@ import javax.persistence.Table;
 @Table(name = "Endereco")
 public class Endereço extends AbstractEntity<Long> {
 	@Column(nullable = false)
-	private String city;
+	private String cidade;
 	
 	@Column(nullable = false, length = 5)
-	private int number;
+	private int numero;
 	
 	@Column(nullable = false)
-	private String district;
+	private String bairro;
 	
-	@Column(name = "zip_code", nullable = false, length = 9)
-	private String zipCode;
+	@Column(nullable = false, length = 9)
+	private String cep;
 	
-	@Column(name = "public_place", nullable = false)
-	private String publicPacle;
+	@Column(nullable = false)
+	private String logradouro;
 	
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false, length = 2)
 	private UF uf;
 	
-	private String complement;
+	private String complemento;
 
-	public String getCity() {
-		return city;
+	public String getCidade() {
+		return cidade;
 	}
 
-	public void setCity(String city) {
-		this.city = city;
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
 	}
 
-	public int getNumber() {
-		return number;
+	public int getNumero() {
+		return numero;
 	}
 
-	public void setNumber(int number) {
-		this.number = number;
+	public void setNumero(int numero) {
+		this.numero = numero;
 	}
 
-	public String getDistrict() {
-		return district;
+	public String getBairro() {
+		return bairro;
 	}
 
-	public void setDistrict(String district) {
-		this.district = district;
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
 	}
 
-	public String getZipCode() {
-		return zipCode;
+	public String getCep() {
+		return cep;
 	}
 
-	public void setZipCode(String zipCode) {
-		this.zipCode = zipCode;
+	public void setCep(String cep) {
+		this.cep = cep;
 	}
 
-	public String getPublicPacle() {
-		return publicPacle;
+	public String getLogradouro() {
+		return logradouro;
 	}
 
-	public void setPublicPacle(String publicPacle) {
-		this.publicPacle = publicPacle;
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
 	}
 
 	public UF getUf() {
@@ -79,11 +79,11 @@ public class Endereço extends AbstractEntity<Long> {
 		this.uf = uf;
 	}
 
-	public String getComplement() {
-		return complement;
+	public String getComplemento() {
+		return complemento;
 	}
 
-	public void setComplement(String complement) {
-		this.complement = complement;
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
 	}
 }
