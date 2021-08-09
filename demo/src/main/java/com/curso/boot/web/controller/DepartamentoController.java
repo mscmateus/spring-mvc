@@ -6,6 +6,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.curso.boot.model.Departamento;
 import com.curso.boot.service.DepartamentoService;
@@ -28,8 +29,9 @@ public class DepartamentoController {
 	}
 	
 	@RequestMapping(path="/salvar", method=RequestMethod.POST)
-	public String save(Departamento departamento) {
+	public String save(Departamento departamento, RedirectAttributes attr) {
 		departamentoService.save(departamento);
+		attr.addFlashAttribute("success", "Departamento cadastrado com sucesso!");
 		return "redirect:/departamentos/listar";
 	}
 	
@@ -40,15 +42,20 @@ public class DepartamentoController {
 	}
 	
 	@RequestMapping(path="/atualizar", method=RequestMethod.POST)
-	public String update(Departamento departamento) {
+	public String update(Departamento departamento, RedirectAttributes attr) {
 		departamentoService.update(departamento);
+		attr.addFlashAttribute("success", "Departamento atualizado com sucesso!");
 		return "redirect:/departamentos/listar";
 	}
 	
 	@RequestMapping(path="/excluir/{id}", method=RequestMethod.GET)
 	public String delete(@PathVariable("id") Long id, ModelMap model) {
-		if(!departamentoService.hasCargos(id))
+		if(departamentoService.hasCargos(id))
+			model.addAttribute("fail", "Departamento não pode ser removido!");
+		else {
 			departamentoService.delete(id);
+			model.addAttribute("success", "Departamento removido com sucesso!");
+		}
 		return list(model);
 	}
 }
