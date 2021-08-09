@@ -34,4 +34,15 @@ public class CargoService {
 		// TODO Auto-generated method stub
 		cargoRepository.update(cargo);
 	}
+
+	public boolean hasFuncionarios(Long id) {
+		if(findById(id).getFuncionarios().isEmpty())
+			return false;
+		return true;
+	}
+
+	public void delete(Long id) {
+		// TODO Auto-generated method stub
+		cargoRepository.delete(id);
+	}
 }

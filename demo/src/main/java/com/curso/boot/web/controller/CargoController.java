@@ -55,6 +55,18 @@ public class CargoController {
 		return "redirect:/cargos/listar";
 	}
 	
+	@RequestMapping(path="/excluir/{id}", method=RequestMethod.GET)
+	public String delete(@PathVariable("id") Long id, ModelMap model) {
+		if(cargoService.hasFuncionarios(id))
+			model.addAttribute("fail", "Não é possível remover este Cargo!");
+		else {
+			cargoService.delete(id);
+			model.addAttribute("success", "Cargo removido com sucesso!");
+		}
+		
+		return list(model);
+	}
+	
 	@ModelAttribute("departamentos")
 	public List<Departamento> listDepartamentos() {
 		return departamentoService.findAll();
