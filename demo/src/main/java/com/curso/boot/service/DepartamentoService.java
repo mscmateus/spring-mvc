@@ -34,4 +34,15 @@ public class DepartamentoService {
 		// TODO Auto-generated method stub
 		departamentoRepository.update(departamento);
 	}
+
+	public boolean hasCargos(Long id) {
+		if(findById(id).getCargos().isEmpty())
+			return false;
+		return true;
+	}
+
+	public void delete(Long id) {
+		// TODO Auto-generated method stub
+		departamentoRepository.delete(id);
+	}
 }

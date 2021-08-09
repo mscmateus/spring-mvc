@@ -6,22 +6,31 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import com.curso.boot.model.Cargo;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name = "Department")
+@Table(name = "Departmento")
 public class Departamento extends AbstractEntity<Long> {
 	@Column(nullable = false, length = 60)
-	private String name;
+	private String nome;
 	
-	@OneToMany(mappedBy = "department")	
-	private List<Cargo> offices;
+	@OneToMany(mappedBy = "departmento")	
+	private List<Cargo> cargos;
 
-	public String getName() {
-		return name;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNome(String name) {
+		this.nome = name;
+	}
+
+	public List<Cargo> getCargos() {
+		return cargos;
+	}
+
+	public void setCargos(List<Cargo> cargos) {
+		this.cargos = cargos;
 	}
 }

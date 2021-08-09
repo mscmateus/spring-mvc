@@ -12,73 +12,73 @@ import javax.persistence.Table;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name = "Employee")
+@Table(name = "Funcionario")
 public class Funcionario extends AbstractEntity<Long> {
 	@Column(nullable = false, length = 60 )
-	private String name;
+	private String nome;
 	
 	@Column(nullable = false, columnDefinition = "DECIMAL(7,2) DEFAULT 0.00")
-	private double salary;
+	private double salario;
 	
 	@Column(nullable = false, columnDefinition = "DATE")
-	private LocalDate entry_date;
+	private LocalDate dataEntrada;
 	
 	@Column(columnDefinition = "DATE")
-	private LocalDate departure_date;
+	private LocalDate dataSaida;
 	
 	@ManyToOne
-	@JoinColumn(name = "office")
-	private Cargo office;
+	@JoinColumn(name = "cargo")
+	private Cargo cargo;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "address")
-	private Endereço address;
+	@JoinColumn(name = "endereco")
+	private Endereço endereco;
 
-	public String getName() {
-		return name;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public double getSalary() {
-		return salary;
+	public double getSalario() {
+		return salario;
 	}
 
-	public void setSalary(double salary) {
-		this.salary = salary;
+	public void setSalario(double salario) {
+		this.salario = salario;
 	}
 
-	public LocalDate getEntry_date() {
-		return entry_date;
+	public LocalDate getDataEntrada() {
+		return dataEntrada;
 	}
 
-	public void setEntry_date(LocalDate entry_date) {
-		this.entry_date = entry_date;
+	public void setDataEntrada(LocalDate dataEntrada) {
+		this.dataEntrada = dataEntrada;
 	}
 
-	public LocalDate getDeparture_date() {
-		return departure_date;
+	public LocalDate getDataSaida() {
+		return dataSaida;
 	}
 
-	public void setDeparture_date(LocalDate departure_date) {
-		this.departure_date = departure_date;
+	public void setDataSaida(LocalDate dataSaida) {
+		this.dataSaida = dataSaida;
 	}
 
-	public Cargo getOffice() {
-		return office;
+	public Cargo getCargo() {
+		return cargo;
 	}
 
-	public void setOffice(Cargo office) {
-		this.office = office;
+	public void setCargo(Cargo cargo) {
+		this.cargo = cargo;
 	}
 
-	public Endereço getAddress() {
-		return address;
+	public Endereço getEndereco() {
+		return endereco;
 	}
 
-	public void setAddress(Endereço address) {
-		this.address = address;
+	public void setEndereco(Endereço endereco) {
+		this.endereco = endereco;
 	}
 }

@@ -44,4 +44,11 @@ public class DepartamentoController {
 		departamentoService.update(departamento);
 		return "redirect:/departamentos/listar";
 	}
+	
+	@RequestMapping(path="/excluir/{id}", method=RequestMethod.GET)
+	public String delete(@PathVariable("id") Long id, ModelMap model) {
+		if(!departamentoService.hasCargos(id))
+			departamentoService.delete(id);
+		return list(model);
+	}
 }

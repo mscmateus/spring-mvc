@@ -10,31 +10,39 @@ import javax.persistence.Table;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name = "Office")
+@Table(name = "Cargo")
 public class Cargo extends AbstractEntity<Long> {
 	@Column(nullable = false, length = 60)
-	private String name;
+	private String nome;
 	
 	@ManyToOne
-	@JoinColumn(name = "department")
-	private Departamento department;
+	@JoinColumn(name = "departmento")
+	private Departamento departmento;
 	
-	@OneToMany(mappedBy = "office")
-	private List<Funcionario> employees;
+	@OneToMany(mappedBy = "cargo")
+	private List<Funcionario> funcionarios;
 
-	public String getName() {
-		return name;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public Departamento getDepartment() {
-		return department;
+	public Departamento getDepartmento() {
+		return departmento;
 	}
 
-	public void setDepartment(Departamento department) {
-		this.department = department;
+	public void setDepartmento(Departamento departmento) {
+		this.departmento = departmento;
+	}
+
+	public List<Funcionario> getFuncionarios() {
+		return funcionarios;
+	}
+
+	public void setFuncionarios(List<Funcionario> funcionarios) {
+		this.funcionarios = funcionarios;
 	}
 }

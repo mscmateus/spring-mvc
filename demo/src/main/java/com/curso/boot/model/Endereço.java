@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name = "Address")
+@Table(name = "Endereco")
 public class Endereço extends AbstractEntity<Long> {
 	@Column(nullable = false)
 	private String city;
