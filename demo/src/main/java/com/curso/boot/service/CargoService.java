@@ -1,5 +1,7 @@
 package com.curso.boot.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,8 +20,18 @@ public class CargoService {
 		cargoRepository.save(cargo);
 	}
 
-	public Object findAll() {
+	public List<Cargo> findAll() {
 		// TODO Auto-generated method stub
 		return cargoRepository.findAll();
+	}
+
+	public Cargo findById(Long id) {
+		// TODO Auto-generated method stub
+		return cargoRepository.findById(id);
+	}
+
+	public void update(Cargo cargo) {
+		// TODO Auto-generated method stub
+		cargoRepository.update(cargo);
 	}
 }
