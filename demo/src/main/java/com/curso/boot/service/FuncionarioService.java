@@ -34,4 +34,9 @@ public class FuncionarioService {
 		// TODO Auto-generated method stub
 		funcionarioRepository.update(funcionario);
 	}
+
+	public void delete(Long id) {
+		// TODO Auto-generated method stub
+		funcionarioRepository.delete(id);
+	}
 }

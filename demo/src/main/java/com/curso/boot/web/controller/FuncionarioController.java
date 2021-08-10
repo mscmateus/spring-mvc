@@ -56,6 +56,13 @@ public class FuncionarioController {
 		return "redirect:/funcionarios/listar";
 	}
 	
+	@RequestMapping(path="/excluir/{id}", method=RequestMethod.GET)
+	public String delete(@PathVariable("id") Long id, ModelMap model) {
+		funcionarioService.delete(id);
+		model.addAttribute("success", "Funcionario removido com sucesso!");	
+		return list(model);
+	}
+	
 	@ModelAttribute("cargos")
 	public List<Cargo> listCargos(){
 		return cargoService.findAll();
