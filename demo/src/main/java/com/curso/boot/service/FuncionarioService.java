@@ -17,4 +17,9 @@ public class FuncionarioService {
 		// TODO Auto-generated method stub
 		funcionarioRepository.save(funcionario);
 	}
+
+	public Object findAll() {
+		// TODO Auto-generated method stub
+		return funcionarioRepository.findAll();
+	}
 }
