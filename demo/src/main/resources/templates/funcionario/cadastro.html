@@ -21,7 +21,7 @@
 		</div>
 
 		<div class="container" id="cadastro">
-			<form th:action="@{/funcionarios/salvar}" method="POST" th:object="${funcionario}">
+			<form th:action="${funcionario.id == null} ? @{/funcionarios/salvar} : @{/funcionarios/atualizar}" method="POST" th:object="${funcionario}">
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label for="nome">Nome do Funcionário</label> <input type="text"
@@ -108,7 +108,7 @@
 						<div class="invalid-feedback"></div>
 					</div>
 				</div>
-				<input type="hidden" id="id" name="id" value="" />
+				<input type="hidden" id="id" name="id" value="" th:field="*{id}" />
 				<button type="submit" class="btn btn-primary btn-sm">Salvar</button>
 			</form>
 		</div>

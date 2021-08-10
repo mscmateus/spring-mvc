@@ -1,5 +1,7 @@
 package com.curso.boot.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,8 +20,18 @@ public class FuncionarioService {
 		funcionarioRepository.save(funcionario);
 	}
 
-	public Object findAll() {
+	public List<Funcionario> findAll() {
 		// TODO Auto-generated method stub
 		return funcionarioRepository.findAll();
+	}
+
+	public Funcionario findById(Long id) {
+		// TODO Auto-generated method stub
+		return funcionarioRepository.findById(id);
+	}
+
+	public void update(Funcionario funcionario) {
+		// TODO Auto-generated method stub
+		funcionarioRepository.update(funcionario);
 	}
 }
