@@ -39,4 +39,9 @@ public class FuncionarioService {
 		// TODO Auto-generated method stub
 		funcionarioRepository.delete(id);
 	}
+
+	public List<Funcionario> findByNome(String nome) {
+		// TODO Auto-generated method stub
+		return funcionarioRepository.findByNome(nome);
+	}
 }

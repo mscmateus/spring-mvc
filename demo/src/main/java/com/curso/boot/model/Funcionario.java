@@ -22,7 +22,7 @@ public class Funcionario extends AbstractEntity<Long> {
 	@Column(nullable = false, length = 60 )
 	private String nome;
 	
-	@NumberFormat(style = Style.CURRENCY, pattern = "0,000.00")
+	@NumberFormat(style = Style.CURRENCY, pattern = "#,##0.##")
 	@Column(nullable = false, columnDefinition = "DECIMAL(7,2) DEFAULT 0.00")
 	private double salario;
 	
