@@ -1,5 +1,7 @@
 package com.curso.boot.service;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,5 +50,17 @@ public class FuncionarioService {
 	public List<Funcionario> findByCardoId(Long id) {
 		// TODO Auto-generated method stub
 		return funcionarioRepository.findByCargoId(id);
+	}
+
+	public List<Funcionario> findByDatas(LocalDate entrada, LocalDate saida) {
+		// TODO Auto-generated method stub
+		if(entrada != null && saida != null)
+			return funcionarioRepository.findByDataEntradaDataSaida(entrada, saida);
+		else if(entrada != null)
+			return funcionarioRepository.findByDataEntrada(entrada);
+		else if(saida != null)
+			return funcionarioRepository.findByDataSaida(saida);
+		
+		return  new ArrayList<>();
 	}
 }
