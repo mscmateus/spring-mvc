@@ -5,7 +5,7 @@
 </head>
 <body>
 	<section class="layout-content" layout:fragment="body">
-	
+
 		<nav class="navbar navbar-expand-md bg-light">
 			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 				<ul class="navbar-nav mr-auto">
@@ -123,19 +123,21 @@
 							<td th:text="${f.cargo.nome}">Auxiliar de RH</td>
 							<td>
 								<button type="button" class="btn btn-secondary btn-sm"
-									data-container="body" data-toggle="popover"	data-placement="top"
+									data-container="body" data-toggle="popover"
+									data-placement="top"
 									th:attr="data-content=${f.endereco.logradouro} +','+ ${f.endereco.numero} +','+${f.endereco.complemento}+ ','+${f.endereco.bairro}+ ', ' +${f.endereco.cidade}+ ', ' +${f.endereco.uf.initials}+ ', ' +${f.endereco.cep}">
 									<span class="oi oi-eye" title="Visualizar" aria-hidden="true"></span>
 								</button>
 							</td>
 							<td th:text="${#temporals.format(f.dataEntrada, 'dd/MM/yyyy')}">01/10/2014</td>
-								<td th:text="${#temporals.format(f.dataSaida, 'dd/MM/yyyy')}"></td>
+							<td th:text="${#temporals.format(f.dataSaida, 'dd/MM/yyyy')}"></td>
 							<td colspan="2"><a class="btn btn-info btn-sm"
-								th:href="@{/funcionarios/editar/{id} (id=${f.id})}" role="button"> <span
-									class="oi oi-brush" title="Editar" aria-hidden="true"></span>
+								th:href="@{/funcionarios/editar/{id} (id=${f.id})}"
+								role="button"> <span class="oi oi-brush" title="Editar"
+									aria-hidden="true"></span>
 							</a>
-								<button th:id="${ 'btn_funcionarios/excluir/' + f.id }" type="button"
-									class="btn btn-danger btn-sm" data-toggle="modal"
+								<button th:id="${ 'btn_funcionarios/excluir/' + f.id }"
+									type="button" class="btn btn-danger btn-sm" data-toggle="modal"
 									data-target="#myModal">
 									<span class="oi oi-circle-x" title="Excluir" aria-hidden="true"></span>
 								</button></td>
