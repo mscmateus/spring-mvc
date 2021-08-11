@@ -1,8 +1,11 @@
 package com.curso.boot.web.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,7 +32,10 @@ public class DepartamentoController {
 	}
 	
 	@RequestMapping(path="/salvar", method=RequestMethod.POST)
-	public String save(Departamento departamento, RedirectAttributes attr) {
+	public String save(@Valid Departamento departamento, BindingResult result, RedirectAttributes attr) {
+		if(result.hasErrors())
+			return "departamento/cadastro";
+		
 		departamentoService.save(departamento);
 		attr.addFlashAttribute("success", "Departamento cadastrado com sucesso!");
 		return "redirect:/departamentos/listar";
@@ -42,7 +48,10 @@ public class DepartamentoController {
 	}
 	
 	@RequestMapping(path="/atualizar", method=RequestMethod.POST)
-	public String update(Departamento departamento, RedirectAttributes attr) {
+	public String update(@Valid Departamento departamento, BindingResult result ,RedirectAttributes attr) {
+		if(result.hasErrors())
+			return "departamento/cadastro";
+		
 		departamentoService.update(departamento);
 		attr.addFlashAttribute("success", "Departamento atualizado com sucesso!");
 		return "redirect:/departamentos/listar";
