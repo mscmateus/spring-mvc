@@ -7,14 +7,22 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.springframework.lang.NonNull;
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "Cargo")
 public class Cargo extends AbstractEntity<Long> {
+	@NotBlank(message = "Informe um nome")
+	@Size(min = 3, max= 60, message = "O nome do cargo deve ter entre {min} e {max} caracteres!")
 	@Column(nullable = false, length = 60)
 	private String nome;
 	
+	@NotNull( message = "Selecione um departamento" )
 	@ManyToOne
 	@JoinColumn(name = "departamento")
 	private Departamento departamento;

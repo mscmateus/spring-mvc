@@ -2,9 +2,12 @@ package com.curso.boot.web.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,7 +39,10 @@ public class CargoController {
 	}
 	
 	@RequestMapping(path="/salvar", method=RequestMethod.POST)
-	public String save(Cargo cargo, RedirectAttributes attr) {
+	public String save(@Valid Cargo cargo, BindingResult result, RedirectAttributes attr) {
+		if(result.hasErrors())
+			return "cargo/cadastro";
+		
 		cargoService.save(cargo);
 		attr.addFlashAttribute("success", "Cargo cadastrado com sucesso!");
 		return "redirect:/cargos/listar";
@@ -49,7 +55,10 @@ public class CargoController {
 	}
 	
 	@RequestMapping(path="/atualizar", method=RequestMethod.POST)
-	public String update(Cargo cargo, RedirectAttributes attr) {
+	public String update(@Valid Cargo cargo, BindingResult result, RedirectAttributes attr) {
+		if(result.hasErrors())
+			return "cargo/cadastro";
+		
 		cargoService.update(cargo);
 		attr.addFlashAttribute("success", "Cargo atualizado com sucesso!");
 		return "redirect:/cargos/listar";
