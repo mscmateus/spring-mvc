@@ -10,7 +10,12 @@ public class FuncionarioRepository extends AbstractRepository<Funcionario, Long>
 
 	public List<Funcionario> findByNome(String nome) {
 		// TODO Auto-generated method stub
-		return createQuery("select f from Funcionario f where f.nome like concat('%', ?1, '%') ", nome);
+		return createQuery("SELECT f FROM Funcionario f WHERE f.nome LIKE concat('%', ?1, '%') ", nome);
+	}
+
+	public List<Funcionario> findByCargoId(Long id) {
+		// TODO Auto-generated method stub
+		return createQuery("SELECT f FROM Funcionario f LEFT JOIN f.cargo c WHERE c.id = ?1 ", id);
 	}
 
 }

@@ -44,4 +44,9 @@ public class FuncionarioService {
 		// TODO Auto-generated method stub
 		return funcionarioRepository.findByNome(nome);
 	}
+
+	public List<Funcionario> findByCardoId(Long id) {
+		// TODO Auto-generated method stub
+		return funcionarioRepository.findByCargoId(id);
+	}
 }

@@ -70,6 +70,12 @@ public class FuncionarioController {
 		return "funcionario/lista";
 	}
 	
+	@RequestMapping(path="/buscar/cargo", method=RequestMethod.GET)
+	public String getByCargo(@RequestParam("id") Long id, ModelMap model) {
+		model.addAttribute("funcionarios", funcionarioService.findByCardoId(id));
+		return "funcionario/lista";
+	}
+	
 	@ModelAttribute("cargos")
 	public List<Cargo> listCargos(){
 		return cargoService.findAll();
