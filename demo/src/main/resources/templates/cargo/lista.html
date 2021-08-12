@@ -32,7 +32,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="c : ${cargos}">
+						<tr th:each="c : ${pageCargo.registros}">
 							<td th:text="${c.id}">1</td>
 							<td th:text="${c.nome}">Auxiliar Contábil</td>
 							<td th:text="${c.departamento.nome}">Contabilidade</td>
@@ -40,8 +40,8 @@
 								th:href="@{/cargos/editar/{id} (id = ${c.id})}" role="button">
 									<span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
 							</a>
-								<button th:id="${ 'btn_cargos/excluir/' + c.id }"
-									type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+								<button th:id="${ 'btn_cargos/excluir/' + c.id }" type="button"
+									class="btn btn-danger btn-sm" data-toggle="modal"
 									data-target="#myModal">
 									<span class="oi oi-circle-x" title="Exclusão desabilitada"
 										aria-hidden="true"></span>
@@ -49,6 +49,21 @@
 						</tr>
 					</tbody>
 				</table>
+				<nav aria-label="Page navigation example">
+					<ul class="pagination justify-content-center">
+						<li class="page-item"><a class="page-link" th:href="@{/cargos/listar(page=${1})}"
+								tabindex="-1" aria-disabled="true">First</a></li>
+						<li th:class="${pageCargo.pagina == 1} ? 'page-item disabled' : 'page-item'"><a class="page-link" th:href="@{/cargos/listar(page=${pageCargo.pagina - 1})}"
+							tabindex="-1" aria-disabled="true">Previous</a></li>
+						<li class="page-item">
+							<span class="page-link" th:text="|${pageCargo.pagina} de ${pageCargo.totalDePaginas} |"></span>
+						</li>
+						<li th:class="${pageCargo.pagina == pageCargo.totalDePaginas} ? 'page-item disabled' : 'page-item'"><a class="page-link" th:href="@{/cargos/listar(page=${pageCargo.pagina + 1})}">Next</a>
+						</li>
+						<li class="page-item"><a class="page-link" th:href="@{/cargos/listar(page=${pageCargo.totalDePaginas})}"
+							tabindex="-1" aria-disabled="true">Last</a></li>
+					</ul>
+				</nav>
 			</div>
 		</div>
 		<div th:replace="components/modal :: modal"></div>

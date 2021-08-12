@@ -1,6 +1,7 @@
 package com.curso.boot.web.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -12,12 +13,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.curso.boot.model.Cargo;
 import com.curso.boot.model.Departamento;
 import com.curso.boot.service.CargoService;
 import com.curso.boot.service.DepartamentoService;
+import com.curso.boot.util.PaginacaoUtil;
 
 @Controller
 @RequestMapping(path="/cargos")
@@ -28,8 +31,12 @@ public class CargoController {
 	private DepartamentoService departamentoService;
 	
 	@RequestMapping(path="/listar")
-	public String list(ModelMap model) {
-		model.addAttribute("cargos", cargoService.findAll());
+	public String list(ModelMap model, @RequestParam("page") Optional<Integer> page) {
+		int paginaAutual = page.orElse(1);
+		
+		PaginacaoUtil<Cargo> pageCargo = cargoService.buscaPorPagina(paginaAutual);
+		
+		model.addAttribute("pageCargo", pageCargo);
 		return "/cargo/lista";
 	}
 	
@@ -73,7 +80,7 @@ public class CargoController {
 			model.addAttribute("success", "Cargo removido com sucesso!");
 		}
 		
-		return list(model);
+		return "cargo/lista";
 	}
 	
 	@ModelAttribute("departamentos")

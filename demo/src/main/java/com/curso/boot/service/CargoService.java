@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.curso.boot.model.Cargo;
 import com.curso.boot.repository.CargoRepository;
+import com.curso.boot.util.PaginacaoUtil;
 
 @Service
 @Transactional
@@ -44,5 +45,9 @@ public class CargoService {
 	public void delete(Long id) {
 		// TODO Auto-generated method stub
 		cargoRepository.delete(id);
+	}
+	
+	public PaginacaoUtil<Cargo> buscaPorPagina(int pagina) {
+		return cargoRepository.buscaPaginada(pagina);
 	}
 }
