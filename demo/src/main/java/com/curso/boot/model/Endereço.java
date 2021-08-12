@@ -19,10 +19,10 @@ public class Endereço extends AbstractEntity<Long> {
 	@Column(nullable = false)
 	private String cidade;
 	
-	@NotNull(message = "{}NotNull.endereco.numero")
+	@NotNull(message = "{NotNull.endereco.numero}")
 	@Digits(integer = 5, fraction = 0)
 	@Column(nullable = false, length = 5)
-	private int numero;
+	private Integer numero;
 	
 	@NotBlank
 	@Size(min = 3, max = 255)
@@ -54,11 +54,11 @@ public class Endereço extends AbstractEntity<Long> {
 		this.cidade = cidade;
 	}
 
-	public int getNumero() {
+	public Integer getNumero() {
 		return numero;
 	}
 
-	public void setNumero(int numero) {
+	public void setNumero(Integer numero) {
 		this.numero = numero;
 	}
 
