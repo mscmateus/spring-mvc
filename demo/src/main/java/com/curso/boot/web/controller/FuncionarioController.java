@@ -3,11 +3,14 @@ package com.curso.boot.web.controller;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,7 +44,10 @@ public class FuncionarioController {
 	}
 	
 	@RequestMapping(path="/salvar", method = RequestMethod.POST)
-	public String save(Funcionario funcionario, RedirectAttributes attr) {
+	public String save(@Valid Funcionario funcionario, BindingResult result, RedirectAttributes attr) {
+		if(result.hasErrors())
+			return "funcionario/cadastro";
+		
 		funcionarioService.save(funcionario);
 		attr.addFlashAttribute("success", "Funcionario cadastrado com sucesso!");
 		return "redirect:/funcionarios/listar";
@@ -54,7 +60,10 @@ public class FuncionarioController {
 	}
 	
 	@RequestMapping(path="/atualizar", method=RequestMethod.POST)
-	public String updtate(Funcionario funcionario, RedirectAttributes attr) {
+	public String updtate(@Valid Funcionario funcionario, BindingResult result, RedirectAttributes attr) {
+		if(result.hasErrors())
+			return "funcionario/cadastro";
+		
 		funcionarioService.update(funcionario);
 		attr.addFlashAttribute("success", "Funcionario atualizado com sucesso!");
 		return "redirect:/funcionarios/listar";
