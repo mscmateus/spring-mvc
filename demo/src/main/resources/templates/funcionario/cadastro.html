@@ -54,8 +54,10 @@
 					</div>
 					<div class="form-group col-md-6">
 						<label for="dataSaida">Data de Saída</label> <input type="date"
-							class="form-control" id="dataSaida" name="dataSaida" value="" th:field="*{dataSaida}" />
-						<div class="invalid-feedback"></div>
+							class="form-control" id="dataSaida" name="dataSaida" value="" th:field="*{dataSaida}" 
+							th:classappend="${#fields.hasErrors('dataSaida')} ? 'is-invalid'"/>
+						<div class="invalid-feedback">
+							<span th:errors="*{dataSaida}"></span>
 					</div>
 				</div>
 				<div class="form-row">
